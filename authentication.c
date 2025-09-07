@@ -1,25 +1,66 @@
 #include <stdio.h>
 #include <string.h>
+#include <termios.h>
+#include <unistd.h>
 
 #include "include/db.h"
+#include "include/screen.h"
 
 #define MAX_LENGTH 25
+#define INPUT 0
+#define PASS 1
 
-void scan(char *buffer){
+void scan(char *buffer, int type){
+    struct termios oldt, newt;
     char newBuffer[MAX_LENGTH];
 
+    if(type){
+        tcgetattr(STDIN_FILENO, &oldt);
+        newt = oldt;
+
+        newt.c_lflag &= ~(ECHO);
+        tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+    }
+
     printf("> ");
+    fflush(stdout);
     if(fgets(newBuffer, sizeof(newBuffer), stdin) != NULL){
         newBuffer[strcspn(newBuffer, "\n")] = 0;
         snprintf(buffer, MAX_LENGTH, "%s", newBuffer);
     }
+
+    if(type){
+        tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+        printf("\n");
+    }
 }
 
-int auth_bank(){
+void auth_bank(){
     char accountNumber[100];
+    char personnalCode[100];
     
-    printf("Account number\n");
-    scan(accountNumber);
+    printf("Account Number");
+    scan(accountNumber, INPUT);
+    printf("Personnal Code");
+    scan(personnalCode, PASS);
+    printf("\n\n");
 
-    return 0;
+    if(loginAccount(accountNumber, personnalCode)){
+        init();
+
+        /*const unsigned char *name   = sqlite3_column_text(stmt, 3);
+        const unsigned char *ftName = sqlite3_column_text(stmt, 4);
+
+        printf(" Welcome %s %s !\n", name ? (const char *)name : "(NULL)", ftName);*/
+        
+
+    } else {
+        printf("❌ Worst Identifier\n");
+        auth_bank();
+    }
+    
+}
+
+void auth_blockchain(){
+    
 }

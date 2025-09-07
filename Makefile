@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -g
 PKGFLAGS = $(shell pkg-config --cflags --libs sqlite3)
 
-SRC = main.c authentication.c db.c
+SRC = main.c authentication.c db.c screen.c
 
 OUTPUT = build
 
