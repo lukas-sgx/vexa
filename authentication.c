@@ -46,14 +46,22 @@ void auth_bank(){
     printf("\n\n");
 
     if(loginAccount(accountNumber, personnalCode)){
+        char target[100];
+        int run = 1;
+
         init();
+        selectAccount(accountNumber);
 
-        /*const unsigned char *name   = sqlite3_column_text(stmt, 3);
-        const unsigned char *ftName = sqlite3_column_text(stmt, 4);
+        while (run)
+        {
+            scan(target, INPUT);
 
-        printf(" Welcome %s %s !\n", name ? (const char *)name : "(NULL)", ftName);*/
-        
-
+            if(strcmp(target, "quit") == 0){
+                run = 0;
+            }else if(strcmp(target, "help") == 0){
+                printf("HELP:\n");
+            }
+        }
     } else {
         printf("❌ Worst Identifier\n");
         auth_bank();
@@ -62,5 +70,5 @@ void auth_bank(){
 }
 
 void auth_blockchain(){
-    
+
 }
