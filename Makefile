@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -g
 PKGFLAGS = $(shell pkg-config --cflags --libs ncurses)
 
-SRC = main.c
+SRC = main.c authentication.c
 
 OUTPUT = build
 
