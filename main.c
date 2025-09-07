@@ -20,7 +20,7 @@ void init(){
     """   ╚═══╝  ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝\n"""
     """\n"""
     BLACK
-    """    *** Digital Bank Vexa ***\n\n"""
+    """     *** Digital Bank Vexa ***\n\n"""
     WHITE);
 }
 

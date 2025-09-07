@@ -1,8 +1,8 @@
 CC = gcc
 CFLAGS = -Wall -g
-PKGFLAGS = $(shell pkg-config --cflags --libs ncurses)
+PKGFLAGS = $(shell pkg-config --cflags --libs sqlite3)
 
-SRC = main.c authentication.c
+SRC = main.c authentication.c db.c
 
 OUTPUT = build
 
