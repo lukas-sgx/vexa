@@ -1,12 +1,11 @@
-# ⚡ Vexa ⚡
-
-**Un projet en C avec authentification sécurisée et SQLite**
-
-![Langage](https://img.shields.io/badge/langage-C-blue?style=flat-square)
-![Database](https://img.shields.io/badge/database-SQLite-lightgrey?style=flat-square)
-![Build](https://img.shields.io/badge/build-Makefile-green?style=flat-square)
-
----
+<h1 align="center">⚡ Vexa ⚡</h1>
+<p align="center">
+  <b>Banque et Crypto</b>  
+  <br/>  
+  <img src="https://img.shields.io/badge/langage-C-blue?style=flat-square"/>
+  <img src="https://img.shields.io/badge/database-SQLite-lightgrey?style=flat-square"/>
+  <img src="https://img.shields.io/badge/build-Makefile-green?style=flat-square"/>
+</p>
 
 ## 🚀 Fonctionnalités
 
@@ -124,7 +123,7 @@ Les contributions sont bienvenues 🎉
 ## 📜 Licence
 
 📌 Auteur : [lukas-sgx](https://github.com/lukas-sgx)  
-Licence : à définir (MIT, Apache, etc.)
+Licence : MIT
 
 ---
 
