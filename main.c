@@ -1,22 +1,23 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "colors.h"
+#include <string.h>
 
+#include "include/colors.h"
 
-int scan(){
-    char buffer[250];
-    int c = 1;
-    
-    fgets(buffer, c, stdin);
+#define MAX_LENGTH 250
 
-    return 0;
+void scan(char *buffer){
+    char newBuffer[MAX_LENGTH];
+
+    printf("> ");
+    if(fgets(newBuffer, sizeof(newBuffer), stdin) != NULL){
+        snprintf(buffer, sizeof(buffer+1), newBuffer);
+    }
 }
 
-int main(int argc, char const *argv[])
-{
+void init(){
     CLEAR_SCREEN();
 
-    int run = 1;
     printf("""\n"""
     GREEN
     """ ██╗   ██╗███████╗██╗  ██╗ █████╗ \n"""
@@ -27,14 +28,23 @@ int main(int argc, char const *argv[])
     """   ╚═══╝  ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝\n"""
     """\n"""
     BLACK
-    """    *** Banque Digitale Vexa ***\n\n""");
+    """    *** Digital Bank Vexa ***\n\n""");
+}
 
-    printf(WHITE);
+int main(int argc, char const *argv[])
+{
+    int run = 1;
 
+    init();
 
-    while(run){
-        scan();
-    }
+    printf("%sChoose protocol: Bank (1) Blockchain (2)\n", WHITE);
+
+    char protocol[MAX_LENGTH];
+    scan(protocol);
+
+    if(strcmp(protocol, "1")){
+        init();
+    }    
 
     return 0;
 }

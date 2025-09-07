@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -g
-#PKGFLAGS = $(shell pkg-config --cflags --libs )
+PKGFLAGS = $(shell pkg-config --cflags --libs ncurses)
 
 SRC = main.c
 
@@ -15,7 +15,7 @@ build_dir:
 	@mkdir -p $(OUTPUT)
 
 $(BANK): $(SRC)
-	@echo "Compiling VEXA 🛠️" && $(CC) $(CFLAGS) $^ -o $@
+	@echo "Compiling VEXA 🛠️" && $(CC) $(CFLAGS) $^ -o $@ $(PKGFLAGS)
 	@echo "🚀 Launch VEXA" && ./$(BANK)
 
 run:
