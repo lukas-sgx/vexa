@@ -9,4 +9,4 @@
 #define WHITE   "\033[37m"
 #define BOLD    "\033[1m"
 
-#define CLEAR_SCREEN printf("\033[2J\033[H")
+#define CLEAR_SCREEN() printf("\033[2J\033[H")
