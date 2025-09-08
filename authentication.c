@@ -50,7 +50,7 @@ void auth_bank(){
         int run = 1;
 
         init();
-        selectAccount(accountNumber);
+        selectAccount(accountNumber, personnalCode);
 
         while (run)
         {

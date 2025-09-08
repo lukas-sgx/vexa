@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -g
-PKGFLAGS = $(shell pkg-config --cflags --libs sqlite3)
+PKGFLAGS = $(shell pkg-config --cflags --libs libmariadb)
 
 SRC = main.c authentication.c db.c screen.c
 
