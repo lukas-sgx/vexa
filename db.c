@@ -218,7 +218,7 @@ void balance(char *number, char *personnal){
         out_sold[sold_len] = '\0';
         
 
-        printf("Account Banlance: ");
+        printf("Remaining Banlance: ");
         if(atoi(out_sold) >= 0){
             printf("%s%s€\n%s""", GREEN, out_sold, WHITE);
         }else{

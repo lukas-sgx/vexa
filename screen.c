@@ -22,6 +22,7 @@ void init(){
 void help(){
     printf("""List of all VEXA commands:\n"""
            """clear                      (\\c) Clear the current input statement\n"""
+           """switch                      (\\s) Switch account\n"""
            """transfert 'sum (€)' 'IBAN' (\\t) Tranfert money to another account\n"""
            """balance                    (\\b) Show account balance\n\n"""
     );

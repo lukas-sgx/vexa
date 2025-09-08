@@ -57,12 +57,15 @@ void auth_bank(){
         {
             scan(target, INPUT);
 
-            if(strcmp(target, "quit") == 0){
+            if((strcmp(target, "quit") == 0)|| (strcmp(target, "\\q") == 0)){
                 run = 0;
-            }else if(strcmp(target, "help") == 0){
+            }else if((strcmp(target, "help") == 0) || (strcmp(target, "\\h") == 0)){
                 help();
             }else if((strcmp(target, "balance") == 0) || (strcmp(target, "\\b") == 0)){
                 balance(accountNumber, personnalCode);
+            }else if((strcmp(target, "switch") == 0) || (strcmp(target, "\\s") == 0)){
+                init();
+                auth_bank();
             }
         }
     } else {
