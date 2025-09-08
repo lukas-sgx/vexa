@@ -33,6 +33,7 @@ void scan(char *buffer, int type){
         tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
         printf("\n");
     }
+    fflush(stdout);
 }
 
 void auth_bank(){
@@ -59,7 +60,9 @@ void auth_bank(){
             if(strcmp(target, "quit") == 0){
                 run = 0;
             }else if(strcmp(target, "help") == 0){
-                printf("HELP:\n");
+                help();
+            }else if((strcmp(target, "balance") == 0) || (strcmp(target, "\\b") == 0)){
+                balance(accountNumber, personnalCode);
             }
         }
     } else {

@@ -18,3 +18,11 @@ void init(){
     """     *** Digital Bank Vexa ***\n\n"""
     WHITE);
 }
+
+void help(){
+    printf("""List of all VEXA commands:\n"""
+           """clear                      (\\c) Clear the current input statement\n"""
+           """transfert 'sum (€)' 'IBAN' (\\t) Tranfert money to another account\n"""
+           """balance                    (\\b) Show account balance\n\n"""
+    );
+}
