@@ -66,6 +66,9 @@ void auth_bank(){
             }else if((strcmp(target, "switch") == 0) || (strcmp(target, "\\s") == 0)){
                 init();
                 auth_bank();
+            }else if((strcmp(target, "clear") == 0) || (strcmp(target, "\\c") == 0)){
+                init();
+                printf("type 'help' to show informations\n\n");
             }
         }
     } else {
