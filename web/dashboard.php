@@ -145,11 +145,24 @@ if(!isset($_SESSION["user"])){
           <div class="card mini-card" style="margin-top:12px">
             <div>
               <div style="font-size:12px;color:var(--muted)">Taux EUR → USD</div>
-              <div style="font-weight:700">1 EUR = 1.06 USD</div>
+              <div style="font-weight:700"><?php
+				$url = "https://v6.exchangerate-api.com/v6/0c4272aa019df61276bd5c10/latest/EUR";
+
+				$data = file_get_contents($url);
+				$json = json_decode($data, true);
+
+				if ($json['result'] == 'success' && isset($json['conversion_rates']['USD'])) {
+					$eur_to_usd = $json['conversion_rates']['USD'];
+					echo "1 EUR = " . $eur_to_usd . " USD";
+				} else {
+					echo "Impossible de récupérer le taux de change.";
+}
+				?>
+			  </div>
             </div>
             <div style="font-size:13px;color:var(--muted);text-align:right">
               <div>Dernière mise à jour</div>
-              <div style="font-weight:700">07 Sep 2025</div>
+              <div style="font-weight:700">Now</div>
             </div>
           </div>
 

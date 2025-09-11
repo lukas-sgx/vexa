@@ -42,10 +42,16 @@
 
         foreach($info as $row){
             if($row["type"] == "transfert"){
+                
+
                 if($iban === $row["fromAcc"]){
-                    echo "{id:" . $i . ", who:'". $row["toAcc"] . "', date: '" . $row["date"] . "', amount: -".$row["price"]. "},";
+                    $masked_iban = substr($row["toAcc"], 0, 2) . str_repeat('*', strlen($row["toAcc"]) - 6) . substr($row["toAcc"], -4);
+
+                    echo "{id:" . $i . ", who:'". $masked_iban . "', date: '" . $row["date"] . "', amount: -".$row["price"]. "},";
                 }elseif($iban === $row["toAcc"]){
-                    echo "{id:" . $i . ", who:'". $row["fromAcc"] . "', date: '" . $row["date"] . "', amount: +".$row["price"]. "},";
+                    $masked_iban = substr($row["fromAcc"], 0, 2) . str_repeat('*', strlen($row["fromAcc"]) - 6) . substr($row["fromAcc"], -4);
+
+                    echo "{id:" . $i . ", who:'". $masked_iban . "', date: '" . $row["date"] . "', amount: +".$row["price"]. "},";
                 }
             }
             
