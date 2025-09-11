@@ -26,6 +26,6 @@ void help(){
            """switch                     (\\x) Switch account\n"""
            """transfert 'sum (€)' 'IBAN' (\\t) Tranfert money to another account\n"""
            """balance                    (\\b) Show account balance\n"""
-           """statement                  (\\s) Show account statement\n\n"""
+           """statement                  (\\s) Show history of transactions\n\n"""
     );
 }

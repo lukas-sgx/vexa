@@ -7,7 +7,7 @@
 #include "include/colors.h"
 
 int connectDb(MYSQL **conn){
-    if (!mysql_real_connect(*conn, "127.0.0.1", "root", "root", "account", 3306, NULL, 0)) {
+    if (!mysql_real_connect(*conn, "127.0.0.1", "root", "root", "vexa", 3306, NULL, 0)) {
         fprintf(stderr, "Erreur connexion : %s\n", mysql_error(*conn));
         mysql_close(*conn);
         return 0;
@@ -590,9 +590,33 @@ void lastTransaction(char *myIban, int count){
         maskIban(out_toAcc, masked_to);
 
         if (strcmp(out_fromAcc, myIban) == 0) {
-            printf("👨‍ => 💵 : %s-%.2f€%s -> %s (%s)\n", RED, out_price, WHITE, masked_to, out_date);
+            if(strcmp(out_type, "transfert") == 0){
+                if (out_price >= 100){
+                    printf("👨‍ => 💵 : %s-%.2f€%s -> %s (%s)\n", RED, out_price, WHITE, masked_to, out_date);                
+                }else{
+                    printf("👨‍ => 💵 : %s-%.2f€%s  -> %s (%s)\n", RED, out_price, WHITE, masked_to, out_date); 
+                }
+            }else if(strcmp(out_type, "card") == 0){
+                if (out_price >= 100){
+                    printf("💳 => 💵 : %s-%.2f€%s -> %s (%s)\n", RED, out_price, WHITE, masked_to, out_date);                
+                }else{
+                    printf("💳‍ => 💵 : %s-%.2f€%s  -> %s (%s)\n", RED, out_price, WHITE, masked_to, out_date); 
+                }
+            }
         } else {
-            printf("💵 => 👨‍ : %s+%.2f€%s <- %s (%s)\n", GREEN, out_price, WHITE, masked_to, out_date);
+            if(strcmp(out_type, "transfert") == 0){
+                if (out_price >= 100){
+                    printf("💵 => 👨‍ : %s+%.2f€%s -> %s (%s)\n", GREEN, out_price, WHITE, masked_to, out_date);                
+                }else{
+                    printf("💵 => 👨‍ : %s+%.2f€%s  -> %s (%s)\n", GREEN, out_price, WHITE, masked_to, out_date); 
+                }
+            }else if(strcmp(out_type, "card") == 0){
+                if (out_price >= 100){
+                    printf("💵 => 💳 : %s+%.2f€%s <- %s (%s)\n", GREEN, out_price, WHITE, masked_to, out_date);                
+                }else{
+                    printf("💵 => 💳‍ : %s+%.2f€%s  <- %s (%s)\n", GREEN, out_price, WHITE, masked_to, out_date); 
+                }
+            }
         }
     }
 
