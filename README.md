@@ -1,7 +1,7 @@
 <h1 align="center">⚡ Vexa ⚡</h1>
 <p align="center">
   <b>Banque et Crypto en C</b>  
-  <br/>  
+  <br/><br/>
   <img src="https://img.shields.io/badge/langage-C-blue?style=flat-square"/>
   <img src="https://img.shields.io/badge/database-MySQL-lightgrey?style=flat-square"/>
   <img src="https://img.shields.io/badge/build-Makefile-green?style=flat-square"/>
