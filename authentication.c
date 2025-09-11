@@ -89,7 +89,7 @@ void auth_bank(){
                 }else{
                     printf("%s%.2f€\n%s""", RED, stock, WHITE);
                 }
-            }else if((strcmp(target, "switch") == 0) || (strcmp(target, "\\s") == 0)){
+            }else if((strcmp(target, "switch") == 0) || (strcmp(target, "\\x") == 0)){
                 init();
                 auth_bank();
             }else if((strcmp(target, "clear") == 0) || (strcmp(target, "\\c") == 0)){
@@ -124,6 +124,11 @@ void auth_bank(){
                         printf("%sTranfert denied%s\n", RED, WHITE);
                     }
                 }
+            }else if((strcmp(target, "statement") == 0) || (strcmp(target, "\\s") == 0)){
+                char myiban[100];
+
+                myIBAN(accountNumber, personnalCode, myiban, sizeof(myiban));                
+                lastTransaction(myiban, 10);
             }
         }
     } else {
