@@ -1,6 +1,7 @@
-#include <sqlite3.h>
+#include <stdio.h>
+#include <mysql/mysql.h>
 
-int connectDb(sqlite3 *db);
+int connectDb(MYSQL **conn);
 int loginAccount(char *number, char *personnal);
 void selectAccount(char *number, char *personnal);
 float balance(char *number, char *personnal);
